@@ -28,7 +28,7 @@ gem 'image_processing', '~> 1.2'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'rake', '< 10.5.0'
+gem 'rake', '< 12.4.0'
 
 
 group :development, :test do
