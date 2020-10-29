@@ -6,6 +6,8 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.datetime :date
       t.string :photo
 
+      t.references :user, index: true, foreign_key: true
+
       t.timestamps
     end
   end

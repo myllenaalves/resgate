@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_07_175740) do
+ActiveRecord::Schema.define(version: 2020_10_28_221527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "localizations", force: :cascade do |t|
+    t.string "latitude"
+    t.string "longitude"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "pets", force: :cascade do |t|
     t.string "name"
@@ -21,8 +28,12 @@ ActiveRecord::Schema.define(version: 2020_10_07_175740) do
     t.string "gender"
     t.text "description"
     t.string "avatar"
+    t.bigint "localization_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["localization_id"], name: "index_pets_on_localization_id"
+    t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -30,8 +41,10 @@ ActiveRecord::Schema.define(version: 2020_10_07_175740) do
     t.text "description"
     t.datetime "date"
     t.string "photo"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,4 +57,7 @@ ActiveRecord::Schema.define(version: 2020_10_07_175740) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "pets", "localizations"
+  add_foreign_key "pets", "users"
+  add_foreign_key "posts", "users"
 end
