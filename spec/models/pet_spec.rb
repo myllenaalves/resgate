@@ -1,33 +1,12 @@
 require 'spec_helper'
 
-describe Pet do
-  it 'is valid with valid atributtes' do
-    pet = FactoryBot.build(:pet)
-    expect(pet).to be_valid
-  end
-
-  it 'is not valid without name' do
-    pet = FactoryBot.build(:pet, name: nil)
-    expect(pet).to_not be_valid
-  end
-
-  it 'is not valid without breed' do
-    pet = FactoryBot.build(:pet, breed: nil)
-    expect(pet).to_not be_valid
-  end
-
-  it 'is not valid without gender' do
-    pet = FactoryBot.build(:pet, gender: nil)
-    expect(pet).to_not be_valid
-  end
-
-  it 'is not valid without description' do
-    pet = FactoryBot.build(:pet, description: nil)
-    expect(pet).to_not be_valid
-  end
-
-  it 'is not valid without avatar' do
-    pet = FactoryBot.build(:pet, avatar: nil)
-    expect(pet).to_not be_valid
+describe Pet, type: :model do
+  describe 'validations' do
+   it { should validate_presence_of(:name) }
+   it { should validate_presence_of(:breed) }
+   it { should validate_presence_of(:gender) }
+   it { should validate_presence_of(:description) }
+   it { should validate_presence_of(:avatar) }
+   it { should belong_to(:user) }
   end
 end
