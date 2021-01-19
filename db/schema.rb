@@ -74,7 +74,6 @@ ActiveRecord::Schema.define(version: 2021_01_08_202530) do
     t.string "password"
     t.string "phone"
     t.string "avatar"
-    t.string "auth_hash"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
