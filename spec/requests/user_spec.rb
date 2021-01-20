@@ -1,13 +1,10 @@
-require "rails_helper"
+require "spec_helper"
 
 RSpec.describe "User management", :type => :request do
 
-  it "creates a User" do
-    headers = { "ACCEPT" => "application/json" }
-    post "/widgets", :params => { :widget => {:name => "My Widget"} }, :headers => headers
-
-    expect(response.content_type).to eq("application/json")
-    expect(response).to have_http_status(:created)
+  it "creates and find a User" do
+    get '/auth/google_oauth2'
+    expect(response).to have_http_status(:found)
   end
 
 end
