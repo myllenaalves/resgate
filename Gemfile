@@ -30,7 +30,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem "rake", ">= 12.3.3"
 
-gem 'omniauth', '~> 1.6', '>= 1.6.1'
+gem 'omniauth', '~> 1.9'
 
 gem 'omniauth-google-oauth2'
 
